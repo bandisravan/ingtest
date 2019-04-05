@@ -16,8 +16,7 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "Users")
-@EntityListeners(AuditingEntityListener.class)
+@Table
 public class Users implements Serializable {
 
 	private static final long serialVersionUID = 1L;

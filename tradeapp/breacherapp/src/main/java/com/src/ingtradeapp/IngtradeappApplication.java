@@ -39,6 +39,15 @@ public class IngtradeappApplication extends WebMvcConfigurerAdapter {
 	@Value("${hibernate.models.package}")
 	public String modelsPackage;
 
+	@Value("${hibernate.dialect}")
+	public String hibernateDialect;
+
+	@Value("${hibernate.hbm2ddl.auto}")
+	public String hbdm2DDL;
+
+	@Value("${hibernate.show_sql}")
+	public String showSQL;
+	
 	@Autowired
 	Properties properties;
 
@@ -49,6 +58,9 @@ public class IngtradeappApplication extends WebMvcConfigurerAdapter {
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+		properties.put("hibernate.dialect", hibernateDialect);
+		properties.put("hibernate.hbm2ddl.auto", hbdm2DDL);
+		properties.put("hibernate.show_sql", showSQL);
 		sessionBuilder.addProperties(properties);
 		sessionBuilder.scanPackages(modelsPackage);
 		return sessionBuilder.buildSessionFactory();

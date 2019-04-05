@@ -18,7 +18,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table
-@EntityListeners(AuditingEntityListener.class)
 public class Orders implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,13 +32,13 @@ public class Orders implements Serializable {
 	private Stock stock;
 	
 	@Column
-	private Double stockPrice;
+	private Double stock_price;
 	
 	@Column
 	private Integer volume;
 	
 	@Column
-	private Date tradeTime;
+	private Date trade_time;
 	
 	@Column
 	private Long fees;
@@ -61,11 +60,11 @@ public class Orders implements Serializable {
 	}
 
 	public Double getStockPrice() {
-		return stockPrice;
+		return stock_price;
 	}
 
-	public void setStockPrice(Double stockPrice) {
-		this.stockPrice = stockPrice;
+	public void setStockPrice(Double stock_price) {
+		this.stock_price = stock_price;
 	}
 
 	public Integer getVolume() {
@@ -77,11 +76,11 @@ public class Orders implements Serializable {
 	}
 
 	public Date getTradeTime() {
-		return tradeTime;
+		return trade_time;
 	}
 
-	public void setTradeTime(Date tradeTime) {
-		this.tradeTime = tradeTime;
+	public void setTradeTime(Date trade_time) {
+		this.trade_time = trade_time;
 	}
 
 	public Long getFees() {
