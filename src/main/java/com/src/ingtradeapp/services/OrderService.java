@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.src.ingtradeapp.dao.OrderDAO;
 import com.src.ingtradeapp.model.Orders;
+import com.src.ingtradeapp.model.Stock;
 
 @Component
 public class OrderService {
@@ -24,5 +25,13 @@ public class OrderService {
 		}
 		*/
 		return new Double("-1");
+	}
+	
+	public Stock getStockByName(String stockname) {
+		return orderDAO.getStockByName(stockname);
+	}
+	
+	public void saveOrder(Orders order) {
+		orderDAO.saveOrder(order);
 	}
 }

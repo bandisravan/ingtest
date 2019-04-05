@@ -52,8 +52,16 @@ public class OrderController {
 
 	@PostMapping("")
 	public JSONResponse placeOrders(@RequestBody Orders order) {
-		response.setMsg("Added Succesfully");
-		response.setStatus(true);
+		try {
+			order.setId(null);
+			orderService.saveOrder(order);
+			response.setMsg("Added Succesfully");
+			response.setStatus(true);
+		} catch(Exception e) {
+			e.printStackTrace();
+			response.setMsg("Failed to add");
+			response.setStatus(false);
+		}
 		return response;
 	}
 }
