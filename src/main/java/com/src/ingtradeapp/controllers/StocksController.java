@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.src.ingtradeapp.model.JSONResponse;
 import com.src.ingtradeapp.model.Stock;
-import com.src.ingtradeapp.services.StocksService;
+import com.src.ingtradeapp.services.StockService;
 
 @RestController
 @RequestMapping("/stocks")
@@ -21,10 +21,10 @@ public class StocksController {
 	JSONResponse response;
 	
 	@Autowired
-	StocksService stocksService;
+	StockService stockService;
 	
 	@GetMapping("")
 	public List<Stock> getStocks() {
-		return stocksService.getAllStocks();
+		return stockService.getAllStocks();
 	}
 }

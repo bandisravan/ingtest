@@ -1,11 +1,10 @@
-# insert into ingtradedb.users values(1,'test','test','ROLE_USER');
-# insert into ingtradedb.stock values(1,'HCL');
-# insert into ingtradedb.stock values(2,'ING');
-# insert into ingtradedb.orders values(10,23,'2018-05-04',3,1);
-# insert into ingtradedb.orders values(10,13,'2018-05-04',3,2);
-
-insert into ingtradeapp.Users values(1,'test','test','ROLE_USER');
-insert into ingtradeapp.Stock values(1,'HCL');
-insert into ingtradeapp.Stock values(2,'ING');
-insert into ingtradeapp.Orders values(10,23,'2018-05-04',3,1);
-insert into ingtradeapp.Orders values(10,13,'2018-05-04',3,2);
+delete from users;
+delete from ingtradeapp.stock;
+delete from ingtradeapp.orders;
+insert into ingtradeapp.users(id,name,password,role) values(1,'test','test','ROLE_USER');
+insert into ingtradeapp.stock values(1,'HCL');
+insert into ingtradeapp.stock(id,name) values(2,'ING');
+/* 
+    insert into Orders(id,fees,stock_name,stock_price,trade_time,volume,user_name) values(1,31,'ING',23,'2018-05-04',31,'test');
+    insert into Orders(id,fees,stock_name,stock_price,trade_time,volume,user_name) values(2,31,'HCL',53,'2018-06-07',53,'test');
+*/

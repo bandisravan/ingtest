@@ -35,18 +35,6 @@ public class Users implements Serializable {
 	@Column
 	private String role;
 
-	@Column
-	@OneToMany(fetch = FetchType.EAGER)
-	private List<Orders> order;
-
-	public List<Orders> getOrder() {
-		return order;
-	}
-
-	public void setOrder(List<Orders> order) {
-		this.order = order;
-	}
-
 	public String getRole() {
 		return role;
 	}

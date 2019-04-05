@@ -5,15 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.src.ingtradeapp.dao.StockDAO;
+import com.src.ingtradeapp.model.Orders;
 import com.src.ingtradeapp.model.Stock;
+import com.src.ingtradeapp.repo.OrderRepository;
+import com.src.ingtradeapp.repo.StockRepository;
 
 @Component
-public class StocksService {
+public class StockService {
+	
 	@Autowired
-	StockDAO stockDAO;
+	StockRepository stockRepo;
 	
 	public List<Stock> getAllStocks() {
-		return stockDAO.getStocks();
+		return stockRepo.findAll();
 	}
 }

@@ -5,16 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table
@@ -28,19 +24,31 @@ public class Orders implements Serializable {
 	private Long id;
 
 	@Column
-	private String stock_name;
+	private String stockName;
 	
 	@Column
-	private Double stock_price;
+	private Double stockPrice;
 	
 	@Column
 	private Integer volume;
 	
 	@Column
-	private Date trade_time;
+	@CreationTimestamp
+	private Date tradeTime;
 	
 	@Column
 	private Long fees;
+
+	@Column
+	private String userName = "";
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public Long getId() {
 		return id;
@@ -50,20 +58,20 @@ public class Orders implements Serializable {
 		this.id = id;
 	}
 
-	public String getStock() {
-		return stock_name;
+	public String getStockName() {
+		return stockName;
 	}
 
-	public void setStock(String stock_name) {
-		this.stock_name = stock_name;
+	public void setStockName(String stockName) {
+		this.stockName = stockName;
 	}
 
 	public Double getStockPrice() {
-		return stock_price;
+		return stockPrice;
 	}
 
-	public void setStockPrice(Double stock_price) {
-		this.stock_price = stock_price;
+	public void setStockPrice(Double stockPrice) {
+		this.stockPrice = stockPrice;
 	}
 
 	public Integer getVolume() {
@@ -75,11 +83,11 @@ public class Orders implements Serializable {
 	}
 
 	public Date getTradeTime() {
-		return trade_time;
+		return tradeTime;
 	}
 
-	public void setTradeTime(Date trade_time) {
-		this.trade_time = trade_time;
+	public void setTradeTime(Date tradeTime) {
+		this.tradeTime = tradeTime;
 	}
 
 	public Long getFees() {
