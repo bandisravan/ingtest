@@ -16,4 +16,13 @@ public class OrderService {
 	public List<Orders> getAllOrders() {
 		return orderDAO.getOrders();
 	}
+	
+	public Double getFee(Orders order) {
+/*		double fee=order.getFees();
+		if(fee<500) {
+			fee=fee*0.10/100;
+		}
+		*/
+		return new Double("-1");
+	}
 }

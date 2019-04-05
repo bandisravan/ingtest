@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.src.ingtradeapp.services.OrderService;
 
 @RestController
 @RequestMapping("/orders")
+@CrossOrigin
 public class OrderController {
 
 	@Autowired
@@ -33,6 +35,7 @@ public class OrderController {
 			OrderResponse res = new OrderResponse();
 			res.setId(c.getId().intValue());
 			res.setStock_name(c.getStock().getName());
+			res.setStock_price(c.getStockPrice());
 			res.setVolume(c.getVolume());
 			res.setFees(c.getFees().intValue());
 			res.setTrade_time(c.getTradeTime());
