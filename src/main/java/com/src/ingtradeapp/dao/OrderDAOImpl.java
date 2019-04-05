@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.src.ingtradeapp.model.JSONResponse;
 import com.src.ingtradeapp.model.Orders;
 
 @Component
@@ -20,7 +22,5 @@ public class OrderDAOImpl implements OrderDAO {
 		List<Orders> result = session.createQuery("from Orders").list();
 		session.close();
 		return result;
-
 	}
-
 }

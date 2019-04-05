@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.src.ingtradeapp.model.JSONResponse;
 import com.src.ingtradeapp.model.Orders;
 
 @Component
