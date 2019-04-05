@@ -34,7 +34,7 @@ public class OrderController {
 		orderService.getAllOrders().stream().forEach(c-> {
 			OrderResponse res = new OrderResponse();
 			res.setId(c.getId().intValue());
-			res.setStock_name(c.getStock().getName());
+			res.setStock_name(c.getStock());
 			res.setStock_price(c.getStockPrice());
 			res.setVolume(c.getVolume());
 			res.setFees(c.getFees().intValue());

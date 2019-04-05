@@ -27,9 +27,8 @@ public class Orders implements Serializable {
 	@Column(name = "id", length = 11)
 	private Long id;
 
-	@OneToOne(fetch=FetchType.EAGER)
-	@MapsId
-	private Stock stock;
+	@Column
+	private String stock_name;
 	
 	@Column
 	private Double stock_price;
@@ -51,12 +50,12 @@ public class Orders implements Serializable {
 		this.id = id;
 	}
 
-	public Stock getStock() {
-		return stock;
+	public String getStock() {
+		return stock_name;
 	}
 
-	public void setStock(Stock stock) {
-		this.stock = stock;
+	public void setStock(String stock_name) {
+		this.stock_name = stock_name;
 	}
 
 	public Double getStockPrice() {
