@@ -37,7 +37,7 @@ public class OrderService {
 			fee = (long) (volume * 0.10);
 		}else {
 			fee = (long) (volume * 0.15);
-		}
+		} 
 		return fee;
 	}
 	
