@@ -1,26 +1,29 @@
 package com.src.ingtradeapp.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name="Users")
+@Table(name = "Users")
 @EntityListeners(AuditingEntityListener.class)
 public class Users implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", length = 11)
 	private Long id;
 
@@ -29,10 +32,22 @@ public class Users implements Serializable {
 
 	@Column
 	private String password;
-	
+
 	@Column
 	private String role;
-	
+
+	@Column
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Orders> order;
+
+	public List<Orders> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Orders> order) {
+		this.order = order;
+	}
+
 	public String getRole() {
 		return role;
 	}
