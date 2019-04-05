@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.src.ingtradeapp.model.JSONResponse;
 import com.src.ingtradeapp.model.Orders;
+import com.src.ingtradeapp.response.OrderResponse;
 import com.src.ingtradeapp.services.OrderService;
 
 @RestController
@@ -26,8 +27,18 @@ public class OrderController {
 	OrderService orderService;
 	
 	@GetMapping("")
-	public List<Orders> getOrders() {
-		return orderService.getAllOrders();
+	public List<OrderResponse> getOrders() {
+		ArrayList<OrderResponse> response = new ArrayList();
+		orderService.getAllOrders().stream().forEach(c-> {
+			OrderResponse res = new OrderResponse();
+			res.setId(c.getId().intValue());
+			res.setStock_name(c.getStock().getName());
+			res.setVolume(c.getVolume());
+			res.setFees(c.getFees().intValue());
+			res.setTrade_time(c.getTradeTime());
+			response.add(res);
+		});
+		return response;
 	}
 	
 	
