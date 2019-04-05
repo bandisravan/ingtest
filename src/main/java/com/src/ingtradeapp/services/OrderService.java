@@ -31,7 +31,19 @@ public class OrderService {
 		return orderDAO.getStockByName(stockname);
 	}
 	
+	public Long calculateFee(Integer volume) {
+		Long fee = (long) 0;
+		if(volume < 500) {
+			fee = (long) (volume * 0.10);
+		}else {
+			fee = (long) (volume * 0.15);
+		}
+		return fee;
+	}
+	
 	public void saveOrder(Orders order) {
+		Long fee = calculateFee(order.getVolume());
+		order.setFees(fee);
 		orderDAO.saveOrder(order);
 	}
 }
