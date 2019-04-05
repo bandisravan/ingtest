@@ -71,14 +71,22 @@
 
 	<distributionManagement>
 		<repository>
+
 			<id>nexus</id>
-			<name>ING_Suite</name>
-			<url>http://13.233.244.181:8081/repository/ING-SUITE/</url>
+
+			<name>maven-releases</name>
+			<url>http://13.232.23.242:8081/repository/maven-releases/</url>
+
 		</repository>
+
 		<snapshotRepository>
+
 			<id>nexus</id>
-			<name>ISmart-Snap</name>
-			<url>http://13.233.244.181:8081/repository/ING-SUITE-SNAPSHOT/</url>
+
+			<name>maven-snapshots </name>
+
+			<url>13.232.23.242:8081/#admin/repository/repositories:maven-snapshots</url>
+
 		</snapshotRepository>
 	</distributionManagement>
 	<build>
