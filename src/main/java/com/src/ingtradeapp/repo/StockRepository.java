@@ -14,5 +14,4 @@ public interface StockRepository extends CrudRepository<Stock, Serializable>{
 	List<Stock> findAll();
 	List<Stock> findAllByOrderByRecommendedDesc();
 	Stock findByName(String name);
-	
 }

@@ -78,8 +78,8 @@
 
 			<id>nexus</id>
 
-			<name>maven-releases</name>
-			<url>http://13.232.23.242:8081/repository/maven-releases/</url>
+			<name>ING_Java_Release</name>
+			<url>http://52.66.201.185:8081/repository/ING_Java_Release/</url>
 
 		</repository>
 
@@ -87,9 +87,9 @@
 
 			<id>nexus</id>
 
-			<name>maven-snapshots </name>
+			<name>ING_Java_Snapshot</name>
 
-			<url>13.232.23.242:8081/#admin/repository/repositories:maven-snapshots</url>
+			<url>http://52.66.201.185:8081/repository/ING_Java_Snapshot/</url>
 
 		</snapshotRepository>
 	</distributionManagement>
