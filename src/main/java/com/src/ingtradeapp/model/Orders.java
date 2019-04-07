@@ -31,7 +31,7 @@ public class Orders implements Serializable {
 	
 	@Column
 	private Integer volume;
-	
+
 	@Column
 	@CreationTimestamp
 	private Date tradeTime;

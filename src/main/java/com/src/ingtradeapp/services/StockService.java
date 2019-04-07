@@ -17,6 +17,6 @@ public class StockService {
 	StockRepository stockRepo;
 	
 	public List<Stock> getAllStocks() {
-		return stockRepo.findAll();
+		return stockRepo.findAllOrderByRecommendedDesc();
 	}
 }

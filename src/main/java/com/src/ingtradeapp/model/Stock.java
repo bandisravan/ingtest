@@ -38,4 +38,16 @@ public class Stock implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Column
+	private Integer recommended = 0;
+
+	public Integer getRecommended() {
+		return recommended;
+	}
+
+	public void setRecommended(Integer recommended) {
+		this.recommended = recommended;
+	}
+
 }
