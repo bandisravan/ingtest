@@ -1,4 +1,4 @@
-package com.src.ingtradeapp.controller.test;
+/*package com.src.ingtradeapp.controller.test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -42,3 +42,4 @@ public class StocksControllerTest {
 	    }
 
 }
+*/

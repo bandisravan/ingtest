@@ -39,16 +39,10 @@ public class OrderController {
 
 	@PostMapping("")
 	public JSONResponse placeOrders(@RequestBody Orders order) {
-		try {
-			order.setId(null);
-			orderService.saveOrders(order);
-			response.setMsg("Added Succesfully");
-			response.setStatus(true);
-		} catch(Exception e) {
-			e.printStackTrace();
-			response.setMsg("Failed to add");
-			response.setStatus(false);
-		}
+		order.setId(null);
+		orderService.saveOrders(order);
+		response.setMsg("Added Succesfully");
+		response.setStatus(true);
 		return response;
 	}
 }

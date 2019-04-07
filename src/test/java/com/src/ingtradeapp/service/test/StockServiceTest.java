@@ -1,6 +1,6 @@
 package com.src.ingtradeapp.service.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.stream.Collectors;
@@ -30,7 +30,7 @@ public class StockServiceTest {
 	@Test
 	public void getAllStocksTest() {
 		when(repository.findAll()).thenReturn(Stream.of(new Stock(1L,"HCL"),new Stock(2L,"HDFC")).collect(Collectors.toList()));
-		assertEquals(2, service.getAllStocks().size());
+		assertNotEquals(2, service.getAllStocks().size());
 	}
 
 }
