@@ -12,7 +12,7 @@ import com.src.ingtradeapp.model.Stock;
 @Component
 public interface StockRepository extends CrudRepository<Stock, Serializable>{
 	List<Stock> findAll();
-	List<Stock> findAllOrderByRecommendedDesc();
+	List<Stock> findAllByOrderByRecommendedDesc();
 	Stock findByName(String name);
 	
 }
