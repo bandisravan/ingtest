@@ -19,8 +19,8 @@ public class DayStocksService {
 	@Autowired
 	DayStockRepository stockRepo;
 	
-	public List<DayStocksResponse> getLastDayStocks() {
-		LocalDate date = LocalDate.now().minusDays(1);
+	public List<DayStocksResponse> getLastDayStocks(Integer days) {
+		LocalDate date = LocalDate.now().minusDays(days);
 		List<Orders> result= stockRepo.findAllLastDateData(Date.valueOf(date));
 		HashMap<String,Integer> countVolume = new HashMap();
 		for(Orders currOrder : result) {
