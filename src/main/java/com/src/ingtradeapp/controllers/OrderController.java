@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.src.ingtradeapp.model.JSONResponse;
+import com.src.ingtradeapp.exceptions.AddFailException;
 import com.src.ingtradeapp.model.Orders;
+import com.src.ingtradeapp.response.JSONResponse;
 import com.src.ingtradeapp.services.OrderService;
 
 @RestController
@@ -38,17 +39,11 @@ public class OrderController {
 	}
 
 	@PostMapping("")
-	public JSONResponse placeOrders(@RequestBody Orders order) {
-		try {
-			order.setId(null);
-			orderService.saveOrders(order);
-			response.setMsg("Added Succesfully");
-			response.setStatus(true);
-		} catch(Exception e) {
-			e.printStackTrace();
-			response.setMsg("Failed to add");
-			response.setStatus(false);
-		}
+	public JSONResponse placeOrders(@RequestBody Orders order) throws AddFailException {
+		order.setId(null);
+		orderService.saveOrders(order);
+		response.setMsg("Added Succesfully");
+		response.setStatus(true);
 		return response;
 	}
 }

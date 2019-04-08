@@ -11,8 +11,8 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.src.ingtradeapp.model.DayStocksResponse;
 import com.src.ingtradeapp.model.Orders;
+import com.src.ingtradeapp.response.DayStocksResponse;
 
 @Component
 public class DayStocksService {

@@ -39,8 +39,10 @@ public class StockServiceTest {
 	@Test
 	public void getAllStocksTest() {
 		List<Stock> result = new ArrayList<>();
-		Stock one = new Stock(new Long(1),"Test 1");
-		Stock two = new Stock(new Long(2),"Test 2");
+		Long oneid = new Long("1");
+		Long twoid = new Long("2");
+		Stock one = new Stock(oneid,"Test 1");
+		Stock two = new Stock(twoid,"Test 2");
 		result.add(one);
 		result.add(two);
 		when(stockRepo.findAllByOrderByRecommendedDesc()).thenReturn(result);

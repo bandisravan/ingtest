@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import com.src.ingtradeapp.model.Orders;
 import com.src.ingtradeapp.model.Stock;
 
 @Component

@@ -16,9 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.src.ingtradeapp.model.JSONResponse;
 import com.src.ingtradeapp.model.Stock;
 import com.src.ingtradeapp.repo.StockRepository;
+import com.src.ingtradeapp.response.JSONResponse;
 import com.src.ingtradeapp.services.StockService;
 
 @RunWith(SpringRunner.class)
@@ -46,12 +46,14 @@ public class StockControllerTest {
 	@Test
 	public void getStocksTest() {
 		List<Stock> result = new ArrayList<>();
-		Stock one = new Stock(new Long(1),"Test 1");
-		Stock two = new Stock(new Long(2),"Test 2");
+		Long oneid = new Long("1");
+		Long twoid = new Long("2");
+		Stock one = new Stock(oneid,"Test 1");
+		Stock two = new Stock(twoid,"Test 2");
 		result.add(one);
 		result.add(two);
 		when(stockService.getAllStocks()).thenReturn(result);
-		List<Stock> response = stockController.getStocks();
-		assertEquals(result.size(),response.size());
+		List<Stock> stocksResponse = stockController.getStocks();
+		assertEquals(result.size(),stocksResponse.size());
 	}
 }

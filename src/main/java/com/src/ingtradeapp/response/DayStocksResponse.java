@@ -1,4 +1,4 @@
-package com.src.ingtradeapp.model;
+package com.src.ingtradeapp.response;
 import org.springframework.stereotype.Component;
 
 @Component

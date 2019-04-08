@@ -1,6 +1,5 @@
 package com.src.ingtradeapp.controllers;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.src.ingtradeapp.model.DayStocksResponse;
-import com.src.ingtradeapp.model.JSONResponse;
+import com.src.ingtradeapp.response.DayStocksResponse;
+import com.src.ingtradeapp.response.JSONResponse;
 import com.src.ingtradeapp.services.DayStocksService;
 
 @RestController
