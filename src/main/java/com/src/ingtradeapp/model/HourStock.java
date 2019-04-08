@@ -18,21 +18,6 @@ public class HourStock {
 	public void setVolume(Integer volume) {
 		this.volume = volume;
 	}
-	
-	public HourStock() {};
-	
-	public HourStock(String name, Integer volume) {
-		super();
-		this.name = name;
-		this.volume = volume;
-	}
-	@Override
-	public String toString() {
-		return "HourStock [name=" + name + ", volume=" + volume + "]";
-	}
-	
-	
-	
 
 	
 }

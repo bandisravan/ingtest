@@ -10,8 +10,6 @@ import com.src.ingtradeapp.model.Orders;
 
 @Component
 public interface OrderRepository extends CrudRepository<Orders, Serializable>{
-	
 	 List<Orders> findAll();
-	 
 	 Orders findById(Long id);
 }

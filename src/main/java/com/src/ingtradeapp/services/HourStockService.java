@@ -15,9 +15,9 @@ public class HourStockService {
 	public HourStock getHourStock(String stockname) {
 		Integer volume =  0;
 		volume = hourStockRepository.getHourStock(stockname);
-		HourStock order = new HourStock(stockname,volume);
-		/*order.setName(stockname);
-		order.setVolume(volume);*/		
+		HourStock order = new HourStock();
+		order.setName(stockname);
+		order.setVolume(volume);		
 		return order;
 
 	}
