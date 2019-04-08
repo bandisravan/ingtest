@@ -3,6 +3,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DayStocksResponse {
+
 	private String name;
 	private Integer volume;
 	public String getName() {
@@ -16,5 +17,11 @@ public class DayStocksResponse {
 	}
 	public void setVolume(Integer volume) {
 		this.volume = volume;
+	}
+	public DayStocksResponse(String name,Long volume) {
+		this.name = name;
+		this.volume = volume.intValue();
+	}
+	public DayStocksResponse() {
 	}
 }

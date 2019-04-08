@@ -26,7 +26,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAutoConfiguration
 @EnableWebMvc
 @EnableJpaRepositories
-public class IngtradeappApplication {
+public class IngtradeappApplication extends WebMvcConfigurerAdapter {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(IngtradeappApplication.class, args);
@@ -37,4 +37,22 @@ public class IngtradeappApplication {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any()).build();
 	}
+	
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix("/WEB-INF/view/");
+		resolver.setSuffix(".jsp");
+		resolver.setViewClass(JstlView.class);
+		registry.viewResolver(resolver);
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/").resourceChain(true)
+				.addResolver(new PathResourceResolver());
+		registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
+	
 }

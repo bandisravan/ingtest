@@ -1,7 +1,8 @@
 package com.src.ingtradeapp.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Orders implements Serializable {
@@ -19,29 +23,33 @@ public class Orders implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", length = 11)
 	private Long id;
 
 	@Column
 	private String stockName;
-	
+
 	@Column
 	private Double stockPrice;
-	
+
 	@Column
 	private Integer volume;
 
 	@Column
+	@JsonIgnore
+	private LocalDate creationTime = LocalDate.now();
+
+	@Column
 	@CreationTimestamp
 	private Date tradeTime;
-	
+
 	@Column
 	private Long fees;
 
 	@Column
 	private String userName = "";
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -82,19 +90,27 @@ public class Orders implements Serializable {
 		this.volume = volume;
 	}
 
-	public Date getTradeTime() {
-		return tradeTime;
-	}
-
-	public void setTradeTime(Date tradeTime) {
-		this.tradeTime = tradeTime;
-	}
-
 	public Long getFees() {
 		return fees;
 	}
 
 	public void setFees(Long fees) {
 		this.fees = fees;
+	}
+
+	public LocalDate getCreationTime() {
+		return creationTime;
+	}
+
+	public void setCreationTime(LocalDate creationTime) {
+		this.creationTime = creationTime;
+	}
+
+	public Date getTradeTime() {
+		return tradeTime;
+	}
+
+	public void setTradeTime(Date tradeTime) {
+		this.tradeTime = tradeTime;
 	}
 }

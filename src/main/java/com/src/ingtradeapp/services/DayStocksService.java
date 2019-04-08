@@ -1,44 +1,34 @@
 package com.src.ingtradeapp.services;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.src.ingtradeapp.model.DayStocksResponse;
 import com.src.ingtradeapp.model.Orders;
-import com.src.ingtradeapp.repo.DayStockRepository;
 
 @Component
 public class DayStocksService {
 	
 	@Autowired
-	DayStockRepository stockRepo;
+	EntityManager entityManager;
 	
 	public List<DayStocksResponse> getLastDayStocks(Integer days) {
 		LocalDate date = LocalDate.now().minusDays(days);
-		List<Orders> result= stockRepo.findAllLastDateData(Date.valueOf(date));
-		HashMap<String,Integer> countVolume = new HashMap();
-		for(Orders currOrder : result) {
-			String stockName = currOrder.getStockName();
-			Integer value = currOrder.getVolume();
-			if(countVolume.get(stockName)==null) {
-				countVolume.put(stockName,value);
-			} else {
-				countVolume.put(stockName,countVolume.get(stockName)+value);
-			}
-		}
-		List<DayStocksResponse> response  = new ArrayList<>();
-		for(String name:countVolume.keySet()) {
-			DayStocksResponse currStock = new DayStocksResponse();
-			currStock.setName(name);
-			currStock.setVolume(countVolume.get(name));
-			response.add(currStock);
-		}
+		CriteriaBuilder cbuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<DayStocksResponse> query = cbuilder.createQuery(DayStocksResponse.class);
+		Root<Orders> root = query.from(Orders.class);
+		query.multiselect(root.get("stockName").alias("name"), cbuilder.sum(root.get("volume")).alias("volume"));
+		query.where(cbuilder.greaterThan(root.get("creationTime"), date));
+		query.groupBy(root.get("stockName"));
+		List<DayStocksResponse> response = entityManager.createQuery(query).getResultList();
 		return response;
 	}
 }
