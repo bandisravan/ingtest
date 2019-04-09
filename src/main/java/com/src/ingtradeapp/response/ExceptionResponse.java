@@ -2,15 +2,28 @@ package com.src.ingtradeapp.response;
 
 public class ExceptionResponse {
 
-	private String errorMessage;
+	private String msg;
 	private String requestedURI;
-
-	public String getErrorMessage() {
-		return errorMessage;
+	private boolean status;
+	
+	public String getMsg() {
+		return msg;
 	}
 
-	public void setErrorMessage(final String errorMessage) {
-		this.errorMessage = errorMessage;
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public void setRequestedURI(String requestedURI) {
+		this.requestedURI = requestedURI;
 	}
 
 	public String getRequestedURI() {

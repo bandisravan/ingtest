@@ -33,7 +33,50 @@ public class Users implements Serializable {
 	private String accountNumber;
 
 	@Column
-	private Boolean status;
+	private String address;
+
+	@Column
+	private String dob;
+
+	@Column
+	private String gender;
+	
+	@Column String branch;
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getBranch() {
+		return branch;
+	}
+
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+
+	@Column
+	private Boolean status = true;
 
 	public String getAccountNumber() {
 		return accountNumber;
